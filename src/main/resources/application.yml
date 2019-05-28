@@ -23,4 +23,6 @@ spring:
 
 integration:
   ipApi-client:
-    base-url: http://ip-api.com/json/
+    base-url: http://ip-api.com/json
+  metaWeather-client:
+    base-url: https://www.metaweather.com/api

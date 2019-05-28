@@ -1,4 +1,4 @@
-package com.uol.client.vo;
+package com.uol.client.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class IpApiResponseVO {
+public class IpApiDTO {
 
     @JsonProperty("city")
     private String city;

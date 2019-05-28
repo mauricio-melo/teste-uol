@@ -31,6 +31,12 @@ public class Client extends Auditable implements Serializable {
     @Column(name = "age_client")
     private Integer age;
 
+    @Column(name = "minimum_weather")
+    private Integer minimumWeather;
+
+    @Column(name = "maximum_weather")
+    private Integer maximumWeather;
+
     @Builder.Default
     @Column(name = "flg_enabled")
     private Boolean enabled = true;
