@@ -3,6 +3,7 @@ package com.uol.client.service;
 import com.uol.client.domain.Client;
 import com.uol.client.dto.ClientDTO;
 import com.uol.client.exception.ResourceNotFoundException;
+import com.uol.client.integration.IpApiClient;
 import com.uol.client.mapper.ClientMapper;
 import com.uol.client.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class ClientService {
 
     private final ClientRepository repository;
     private final ClientMapper mapper;
+    private final IpApiClient ipApiClient;
 
     public Page<ClientDTO> findAll(final ClientDTO filter, final Pageable pageable) {
         final Page<Client> result = this.repository.findAll(of(mapper.toEntity(filter)), pageable);
@@ -34,7 +36,8 @@ public class ClientService {
                         .orElseThrow(() -> new ResourceNotFoundException(id.toString())));
     }
 
-    public ClientDTO save(final ClientDTO dto) {
+    public ClientDTO save(final ClientDTO dto, String remoteAddr) {
+        this.ipApiClient.getLocalization(remoteAddr);
         final Client client = this.mapper.toEntity(dto);
         return this.mapper.toDTO(this.repository.save(client));
     }

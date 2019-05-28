@@ -5,6 +5,7 @@ import com.uol.client.service.ClientService;
 import com.uol.client.vo.ClientRequestVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -14,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 
@@ -44,8 +46,8 @@ public class ClientController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Creating a new client", responseReference = "New resource created.")
-    public ResponseEntity<Void> create(@Valid @RequestBody ClientRequestVO clientRequestVO) {
-        final ClientDTO dto = this.service.save(this.voToDTO(clientRequestVO));
+    public ResponseEntity<Void> create(@Valid @RequestBody ClientRequestVO clientRequestVO, HttpServletRequest request) {
+        final ClientDTO dto = this.service.save(this.voToDTO(clientRequestVO), request.getRemoteAddr());
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")

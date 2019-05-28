@@ -16,7 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "client")
-public class Client extends Auditable<String> implements Serializable {
+public class Client extends Auditable implements Serializable {
 
     private static final long serialVersionUID = 932141165141585512L;
 

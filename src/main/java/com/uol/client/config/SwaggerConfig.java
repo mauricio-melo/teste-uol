@@ -28,8 +28,8 @@ public class SwaggerConfig {
 
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title("API REST - Application M2M")
-                .description("Através desta API será possível cadastrar produtos.")
+                .title("API REST - Teste UOL")
+                .description("Através desta API será possível cadastrar clientes.")
                 .termsOfServiceUrl("https://github.com/mauricio-melo")
                 .contact(new Contact("Mauricio Ribeiro de Melo", "https://www.linkedin.com/in/mauriciormelo/", "mauriciomelo.contato@outlook.com"))
                 .license("Licença")

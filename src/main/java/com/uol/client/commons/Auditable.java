@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @Setter(AccessLevel.PROTECTED)
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Auditable<U> {
+public abstract class Auditable {
 
     @CreatedDate
     @Column(name = "dat_creation", updatable = false, nullable = false)
