@@ -1,7 +1,6 @@
 package com.uol.client.integration;
 
 
-import com.uol.client.dto.ConsolidatedWeatherDTO;
 import com.uol.client.dto.LocationDTO;
 import com.uol.client.dto.WeatherDTO;
 import org.springframework.cloud.openfeign.FeignClient;

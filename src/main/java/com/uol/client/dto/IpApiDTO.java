@@ -12,12 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class IpApiDTO {
 
-    @JsonProperty("city")
-    private String city;
-
-    @JsonProperty("country")
-    private String country;
-
     @JsonProperty("lat")
     private Double latitude;
 

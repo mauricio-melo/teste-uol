@@ -38,7 +38,7 @@ public class ClientService {
 
     public ClientDTO findById(final Long id){
         return this.mapper.toDTO(
-                Optional.ofNullable(this.repository.getOne(id))
+                Optional.of(this.repository.getOne(id))
                         .orElseThrow(() -> new ResourceNotFoundException(id.toString())));
     }
 
@@ -48,10 +48,10 @@ public class ClientService {
 
         final Double[] data = {ipApiDTO.getLatitude(), ipApiDTO.getLongitude()};
 
-        List<LocationDTO> locationDTOS = this.metaWeatherClient.getLocation(data);
+        final List<LocationDTO> locationDTOS = this.metaWeatherClient.getLocation(data);
 
-        LocalDate date = LocalDate.now();
-        List<WeatherDTO> weather = this.metaWeatherClient.getWeather(locationDTOS.get(0).getWoeid(), date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        final LocalDate date = LocalDate.now();
+        final List<WeatherDTO> weather = this.metaWeatherClient.getWeather(locationDTOS.get(0).getWoeid(), date.getYear(), date.getMonthValue(), date.getDayOfMonth());
 
         dto.setMaximumWeather((int) Math.round(weather.stream().max(Comparator.comparing(WeatherDTO::getMaximum)).get().getMaximum()));
         dto.setMinimumWeather((int) Math.round(weather.stream().min(Comparator.comparing(WeatherDTO::getMinimum)).get().getMinimum()));
